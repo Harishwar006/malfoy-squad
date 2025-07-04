@@ -1,0 +1,6 @@
+pynput
+pyautogui
+opencv-python
+pyscreenshot
+pillow
+pyperclip
