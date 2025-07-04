@@ -30,6 +30,7 @@ def main():
     server.listen(1)
 
     print(f"[🔌] Listening on {host}:{port}...")
+    print("[DEBUG] Waiting for connection...")
     conn, addr = server.accept()
     print(f"[+] Connection received from {addr[0]}")
 
